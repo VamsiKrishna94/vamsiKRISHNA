@@ -37,4 +37,10 @@ public class Alerts {
 			JsonObject jsonObject = rdr.readObject();
 			JsonArray results = jsonObject.getJsonArray("information");
 			}
-}
+
+	catch (Exception e) {
+			LOGGER.severe("Alerts format is not valid " + e.getMessage());
+			throw e;
+		}
+		
+	}
