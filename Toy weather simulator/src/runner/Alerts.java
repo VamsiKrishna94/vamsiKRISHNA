@@ -36,38 +36,5 @@ public class Alerts {
 				JsonReader rdr = Json.createReader(is)) {
 			JsonObject jsonObject = rdr.readObject();
 			JsonArray results = jsonObject.getJsonArray("information");
-			for (JsonObject result : results.getValuesAs(JsonObject.class)) {
-				Alert alert = new Alert();
-//				LOGGER.info("alert Object: " + result.toString());
-				try {
-					readAlert(result, alert);
-					alertList.add(alert);
-				} catch (Exception e) {
-					LOGGER.severe(e.getMessage());
-					e.printStackTrace();
-				}
 			}
-		} catch (Exception e) {
-			LOGGER.severe("Alerts format is not valid " + e.getMessage());
-			throw e;
-		}
-	}
-
-	private void readAlert(JsonObject jsonItems, Alert alert)
-			throws Exception {
-		String name;
-		if (jsonItems.containsKey("name")) {
-			name = jsonItems.getString("name");
-			alert.setName(name.toLowerCase());
-		}
-		JsonArray alerts = jsonItems.getJsonArray("alert");
-		for (JsonObject alertObj : alerts
-				.getValuesAs(JsonObject.class)) {
-				percentage = alertObj.getInt("temperaturechange");
-		}
-
-	}
-	public int getPercentage (){
-		return this.percentage;
-	}
 }
