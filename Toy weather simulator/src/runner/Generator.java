@@ -10,7 +10,6 @@ import java.util.Calendar;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.interview.model.Alert;
 import com.interview.model.FeatureDetail;
 import com.interview.model.ItemUnit;
 import com.interview.utils.DatetimeUtils;
@@ -32,7 +31,6 @@ public class Generator {
 	public boolean generateData(String startdate, int duration, String path) {
 		String dateString = startdate;
 		Calendar currentDate = DatetimeUtils.getCalendar(dateString);
-		int alertValue = this.alerts.getPercentage();
 		File file = new File(path);
 
 		// if file doesnt exists, then create it
